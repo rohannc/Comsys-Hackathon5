@@ -31,31 +31,31 @@ This project addresses real-world challenges in computer vision where face recog
 
 ## 🚀 Task Implementation
 
-### Task A: Gender Classification (Binary Classification)
+### Task A : Gender Classification (Binary Classification)
 **Objective**: Predict gender (Male/Female) from degraded face images
 
-**Architecture Used**:
-- **Base Model**: MobileNetV2 with Transfer Learning
-- **Input Size**: 224×224×3
-- **Output**: Binary classification (sigmoid activation)
-- **Preprocessing**: Normalization, data augmentation
+**Architecture Used** :
+- **Base Model** : MobileNetV2 with Transfer Learning
+- **Input Size** : 224×224×3
+- **Output** : Binary classification (sigmoid activation)
+- **Preprocessing** : Normalization, data augmentation
 
-**Key Features**:
+**Key Features** :
 - Transfer learning from ImageNet pre-trained MobileNetV2
 - Data augmentation to compensate for limited samples
 - Class weight balancing for imbalanced datasets
 - Custom CNN fallback architecture available
 
-### Task B: Face Recognition (Multi-class Classification)  
-**Objective**: Identify specific individuals from facial features
+### Task B : Face Recognition (Multi-class Classification)  
+**Objective** : Identify specific individuals from facial features
 
-**Architecture Used**:
-- **Feature Extractor**: InceptionResNetV2 (pre-trained)
-- **Classifier**: K-Nearest Neighbors (k=1, cosine similarity)
-- **Input Size**: 299×299×3
-- **Feature Dimension**: 1536D embeddings
+**Architecture Used** :
+- **Feature Extractor** : InceptionResNetV2 (pre-trained)
+- **Classifier** : K-Nearest Neighbors (k = 1, cosine similarity)
+- **Input Size** : 299×299×3
+- **Feature Dimension** : 1536D embeddings
 
-**Key Features**:
+**Key Features** :
 - Deep feature extraction using InceptionResNetV2
 - Cosine similarity for face matching
 - KNN classifier for person identification
@@ -111,11 +111,11 @@ google-colab (development)
 ## 🔧 Implementation Workflow
 
 ### Data Preprocessing Pipeline
-1. **Data Extraction**: Unzip and organize FACECOM dataset
-2. **Folder Restructuring**: Move files from nested distortion folders  
-3. **Train-Val-Test Split**: 70%-20%-10% split with stratification
-4. **Class Reduction**: Trim to manageable subset (900 classes max)
-5. **Data Augmentation**: Albumentations for geometric and photometric transforms
+1. **Data Extraction** : Unzip and organize FACECOM dataset
+2. **Folder Restructuring** : Move files from nested distortion folders  
+3. **Train-Val-Test Split** : 70%-20%-10% split with stratification
+4. **Class Reduction** : Trim to manageable subset (900 classes max)
+5. **Data Augmentation** : Albumentations for geometric and photometric transforms
 
 ### Gender Classification Pipeline
 ```python
@@ -142,74 +142,74 @@ KNN classifier with cosine similarity distance metric
 
 Given the **severely limited dataset**, multiple strategies were implemented:
 
-### Data Augmentation Techniques:
-- **Geometric**: Rotation (±30°), horizontal flip, affine transformations
-- **Photometric**: Gaussian blur, brightness adjustment
-- **Noise Addition**: For regularization
-- **Class Balancing**: Augment minority class to match majority
+### Data Augmentation Techniques :
+- **Geometric** : Rotation (±30°), horizontal flip, affine transformations
+- **Photometric** : Gaussian blur, brightness adjustment
+- **Noise Addition** : For regularization
+- **Class Balancing** : Augment minority class to match majority
 
-### Transfer Learning:
-- **Pre-trained Models**: ImageNet weights for feature extraction
-- **Frozen Base**: Prevent overfitting on small dataset
-- **Fine-tuning**: Only train classification heads
+### Transfer Learning :
+- **Pre-trained Models** : ImageNet weights for feature extraction
+- **Frozen Base** : Prevent overfitting on small dataset
+- **Fine-tuning** : Only train classification heads
 
-### Validation Strategy:
-- **Stratified Splits**: Maintain class distribution
-- **Early Stopping**: Prevent overfitting
-- **Cross-validation**: Where computationally feasible
+### Validation Strategy :
+- **Stratified Splits** : Maintain class distribution
+- **Early Stopping** : Prevent overfitting
+- **Cross-validation** : Where computationally feasible
 
 ## 🎯 Performance Metrics
 
-### Gender Classification Results:
-- **Primary Metric**: Binary accuracy
-- **Additional**: Precision, Recall, F1-Score
-- **Monitoring**: Training/validation accuracy curves
-- **Visualization**: Confusion matrix heatmap
+### Gender Classification Results :
+- **Primary Metric** : Binary accuracy
+- **Additional** : Precision, Recall, F1-Score
+- **Monitoring** : Training/validation accuracy curves
+- **Visualization** : Confusion matrix heatmap
 
-### Face Recognition Results:
-- **Primary Metric**: Top-1 accuracy
-- **Secondary**: Macro-averaged F1-Score  
-- **Distance Metric**: Cosine similarity scores
-- **Evaluation**: Classification report with per-class metrics
+### Face Recognition Results :
+- **Primary Metric** : Top-1 accuracy
+- **Secondary** : Macro-averaged F1-Score  
+- **Distance Metric** : Cosine similarity scores
+- **Evaluation** : Classification report with per-class metrics
 
-*⚠️ Performance Note: Results significantly impacted by limited training data. Larger datasets would substantially improve model robustness and generalization.*
+*⚠️ Performance Note : Results significantly impacted by limited training data. Larger datasets would substantially improve model robustness and generalization.*
 
 ## 🚧 Key Challenges & Limitations
 
-### Dataset Constraints:
-- **Sample Scarcity**: Insufficient data for robust model training
-- **Class Imbalance**: Uneven distribution across gender/identity classes
-- **Limited Diversity**: Reduced representation of challenging conditions
-- **Overfitting Risk**: High variance due to small training sets
+### Dataset Constraints :
+- **Sample Scarcity** : Insufficient data for robust model training
+- **Class Imbalance** : Uneven distribution across gender/identity classes
+- **Limited Diversity** : Reduced representation of challenging conditions
+- **Overfitting Risk** : High variance due to small training sets
 
-### Technical Challenges:
-- **Memory Management**: Efficient processing of limited GPU resources
-- **Data Pipeline**: Complex preprocessing for multiple degradation types
-- **Model Selection**: Balancing complexity vs. available training data
-- **Evaluation**: Reliable metrics with small validation sets
+### Technical Challenges :
+- **Memory Management** : Efficient processing of limited GPU resources
+- **Data Pipeline** : Complex preprocessing for multiple degradation types
+- **Model Selection** : Balancing complexity vs. available training data
+- **Evaluation** : Reliable metrics with small validation sets
 
 ## 🔮 Future Improvements
 
-### Data Enhancement:
-- **Dataset Expansion**: Collect more diverse samples across all conditions
-- **Synthetic Augmentation**: GAN-based data generation for rare conditions  
-- **Active Learning**: Iterative data collection for challenging cases
+### Data Enhancement :
+- **Dataset Expansion** : Collect more diverse samples across all conditions
+- **Synthetic Augmentation** : GAN-based data generation for rare conditions  
+- **Active Learning** : Iterative data collection for challenging cases
 
-### Model Architecture:
-- **Ensemble Methods**: Combine multiple model predictions
-- **Multi-task Learning**: Joint optimization of both tasks
-- **Attention Mechanisms**: Focus on relevant facial regions
-- **Domain Adaptation**: Transfer across different degradation types
+### Model Architecture :
+- **Ensemble Methods** : Combine multiple model predictions
+- **Multi-task Learning** : Joint optimization of both tasks
+- **Attention Mechanisms** : Focus on relevant facial regions
+- **Domain Adaptation** : Transfer across different degradation types
 
-### Deployment Optimization:
-- **Model Compression**: Quantization and pruning for efficiency
-- **Real-time Processing**: Optimize inference speed
-- **Mobile Deployment**: Edge device compatibility
-- **Robustness Testing**: Comprehensive evaluation across conditions
+### Deployment Optimization :
+- **Model Compression** : Quantization and pruning for efficiency
+- **Real-time Processing** : Optimize inference speed
+- **Mobile Deployment** : Edge device compatibility
+- **Robustness Testing** : Comprehensive evaluation across conditions
 
 ## 🚀 Usage Instructions
 
-### Setup & Installation:
+### Setup & Installation :
 ```bash
 # Clone repository
 git clone https://github.com/yourusername/comsys-hackathon5-solution.git
@@ -219,7 +219,7 @@ cd comsys-hackathon5-solution
 pip install tensorflow opencv-python scikit-learn albumentations joblib matplotlib seaborn
 ```
 
-### Running the Models:
+### Running the Models :
 ```python
 # Gender Classification
 from tensorflow.keras.models import load_model
@@ -235,27 +235,27 @@ identity = predict_face('path/to/face.jpg')
 
 ## 📊 Evaluation Metrics
 
-### Task A - Gender Classification:
-- **Accuracy**: Overall classification accuracy
-- **Precision**: True positive rate per class
-- **Recall**: Sensitivity per class  
-- **F1-Score**: Harmonic mean of precision and recall
+### Task A - Gender Classification :
+- **Accuracy** : Overall classification accuracy
+- **Precision** : True positive rate per class
+- **Recall** : Sensitivity per class  
+- **F1-Score** : Harmonic mean of precision and recall
 
 ### Task B - Face Recognition:
-- **Top-1 Accuracy**: Exact match accuracy
-- **Macro F1-Score**: Average F1 across all identities
-- **Cosine Similarity**: Feature space distance metric
+- **Top-1 Accuracy** : Exact match accuracy
+- **Macro F1-Score** : Average F1 across all identities
+- **Cosine Similarity** : Feature space distance metric
 
 ## 🏆 Competition Context
 
-**Event**: COMSYS Hackathon-5, 2025  
-**Theme**: Robust Face Recognition and Gender Classification under Adverse Visual Conditions  
-**Organizer**: COMSYS Educational Trust, Kolkata  
-**Conference**: COMSYS-2025 (September 25-27, 2025, Warsaw, Poland)
+**Event** : COMSYS Hackathon-5, 2025  
+**Theme** : Robust Face Recognition and Gender Classification under Adverse Visual Conditions  
+**Organizer** : COMSYS Educational Trust, Kolkata  
+**Conference** : COMSYS-2025 (September 25-27, 2025, Warsaw, Poland)
 
 ## 🤝 Contributing
 
-Contributions welcome! Areas for improvement:
+Contributions welcome! Areas for improvement :
 - Enhanced data augmentation strategies
 - Alternative model architectures
 - Robust evaluation frameworks
@@ -267,7 +267,7 @@ Contributions welcome! Areas for improvement:
 - **Email** : **chakrabortyrohan.abc01@gmail.com**
 - **Batch** : **Master of Computer Applications '26**
 - **Institution** : **Jadavpur University**
-- **Competition**: COMSYS Hackathon-5 Participant
+- **Competition**: **COMSYS Hackathon-5 Participants**
 
 ## 🙏 Acknowledgments
 
@@ -278,4 +278,4 @@ Contributions welcome! Areas for improvement:
 
 ---
 
-**⚠️ Important Disclaimer**: This solution was developed under significant data constraints with a very limited subset of the original FACECOM dataset. Performance metrics and model robustness should be interpreted considering these limitations. For production deployment, substantially larger and more diverse datasets are strongly recommended.
+**⚠️ Important Disclaimer** : This solution was developed under significant data constraints with a very limited subset of the original FACECOM dataset. Performance metrics and model robustness should be interpreted considering these limitations. For production deployment, substantially larger and more diverse datasets are strongly recommended.

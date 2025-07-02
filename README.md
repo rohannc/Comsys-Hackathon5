@@ -263,10 +263,10 @@ Contributions welcome! Areas for improvement:
 
 ## 📞 Contact
 
-- **Author**: [Bijit Mondal, Rohan Chakraborty, Soumita Nag]
-- **Email**: [chakrabortyrohan.abc01@gmail.com]
-- **Batch**: [Master of Computer Applications '26]
-- **Institution**: [Jadavpur University]
+- **Author** : **Bijit Mondal, Rohan Chakraborty, Soumita Nag**
+- **Email** : **chakrabortyrohan.abc01@gmail.com**
+- **Batch** : **Master of Computer Applications '26**
+- **Institution** : **Jadavpur University**
 - **Competition**: COMSYS Hackathon-5 Participant
 
 ## 🙏 Acknowledgments

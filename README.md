@@ -174,6 +174,63 @@ Given the **severely limited dataset**, multiple strategies were implemented:
 
 *⚠️ Performance Note : Results significantly impacted by limited training data. Larger datasets would substantially improve model robustness and generalization.*
 
+# Testing Instructions
+
+## Prerequisites
+- Python 3.7+
+- Required packages will be automatically installed when running the scripts
+
+## Setup
+1. **Update Google Drive File IDs**: Before running, replace the placeholder file IDs in the scripts:
+   - For Task A: Update `GENDER_MODEL_ID` in `task_a_gender_classification.py`
+   - For Task B: Update `FACE_KNN_MODEL_ID` and `LABEL_ENCODER_ID` in `task_b_face_recognition.py`
+
+2. **Prepare Test Data Structure**:
+   - **Task A**: Organize test images in folders named `female` and `male`
+   - **Task B**: Organize test images in folders named by person identity
+
+## Running the Tests
+
+### Task A - Gender Classification
+```bash
+python task_a_gender_classification.py
+```
+- Input: Path to folder containing `female` and `male` subfolders
+- Output: Accuracy metrics, confusion matrix, and visualizations
+
+### Task B - Face Recognition
+```bash
+python task_b_face_recognition.py
+```
+- Input: Path to folder containing person-named subfolders
+- Output: Recognition accuracy, per-person performance, and sample predictions
+
+## Expected Folder Structure
+```
+Task_A/
+├── female/
+│   ├── image1.jpg
+│   └── image2.jpg
+└── male/
+    ├── image1.jpg
+    └── image2.jpg
+
+Task_B/
+├── person1/
+│   ├── image1.jpg
+│   └── image2.jpg
+├── person2/
+│   ├── image1.jpg
+│   └── image2.jpg
+└── ...
+```
+
+## Outputs
+- Performance metrics (accuracy, precision, recall, F1-score)
+- Visualization plots saved as PNG files
+- Detailed results exported to CSV files
+- Sample prediction images with labels
+
 ## 🚧 Key Challenges & Limitations
 
 ### Dataset Constraints :
